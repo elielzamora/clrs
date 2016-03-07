@@ -34,7 +34,7 @@ public class MergeSort {
 	/** */
 	public static void merge(int[] A, int p, int q, int r){
 		//assert p < q && q <= r;
-		System.out.println("p: "+ p + " q: " + q + " r: " + r);
+		//System.out.println("p: "+ p + " q: " + q + " r: " + r);
 		int l1 = (q-p) + 1;
 		int l2 = (r-q);
 		int[] a1 = new int[l1+1];
@@ -43,10 +43,11 @@ public class MergeSort {
 		for(int i = 0; i < l2; i++) a2[i] = A[i+q+1];
 		a1[l1] = SENTINEL;
 		a2[l2] = SENTINEL;
-		System.out.println("merging:");
-		printArray(a1);
-		System.out.println("with:");
-		printArray(a2);
+		//for debuging
+		//System.out.println("merging:");
+		//printArray(a1);
+		//System.out.println("with:");
+		//printArray(a2);
 		int i = 0, j = 0;
 		for(int k = p; k <= r; k++){
 			if(a1[i] <= a2[j]){
