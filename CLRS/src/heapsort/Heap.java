@@ -40,7 +40,7 @@ public class Heap {
 		}
 	}
 	public void buildHeap(){
-		for(int i = this.size()/ 2; i > -1; i++){
+		for(int i = this.size()/ 2; i > -1; i--){
 			this.heapify(i);
 		}
 	}
