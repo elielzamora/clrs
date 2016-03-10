@@ -1,4 +1,7 @@
 package heapsort;
+
+import heapsort.NotMaxHeapException;
+import heapsort.HeapUnderflowException;
 /**
  * a MAX heap using array-bases implementation
  * 
@@ -121,20 +124,5 @@ public class Heap {
 		}*/
 		//int[] sorted = heap.sort();
 		//for(int i : sorted) System.out.println(i);
-	}
-}
-//** exceptions
-@SuppressWarnings("serial")
-class HeapUnderflowException extends Exception{}
-@SuppressWarnings("serial")
-class NotMaxHeapException extends Exception{
-	int end;
-	public NotMaxHeapException(){}
-	public NotMaxHeapException(int end) {
-		this.end = end;
-	}
-	@Override
-	public String getMessage() {
-		return String.valueOf(this.end);
 	}
 }
