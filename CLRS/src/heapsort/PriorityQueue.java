@@ -91,7 +91,22 @@ public class PriorityQueue {
 		return max;
 	}
 	
-	public static void main(String ... args) throws NotMaxHeapException{
-		
+	public static void main(String ... args)
+			throws NotMaxHeapException{
+		PriorityQueue pq = new PriorityQueue(10);
+		pq.insert(5);
+		pq.insert(20);
+		pq.insert(3);
+		pq.insert(21);
+		pq.insert(14);
+		try {
+			System.out.println(pq.extractMax());
+		} catch (HeapUnderflowException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(int i = 0; i < pq.size(); i++){
+			System.out.println(pq.get(i));
+		}
 	}
 }
