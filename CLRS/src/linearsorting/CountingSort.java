@@ -5,6 +5,14 @@ import util.RndArray;
 public class CountingSort {
 	public static int[] array = RndArray.create(10, 100);
 	//public static int[] array = new int[]{5, 3, 7, 8};
+	public static int max(int[] A){
+		int max = Integer.MIN_VALUE;//- infinity
+		for(int i : A){
+			if(i > max) max = i;
+		}
+		return max;
+	}
+	
 	/**
 	 * valid where the elements of a are from [0 - max)
 	 * @param A
@@ -31,6 +39,10 @@ public class CountingSort {
 			j++;
 		}
 	}
+	public static void countingSort(int[] A)
+			throws Exception{
+		countingSort(A, max(A));
+	}
 	/*
 	 * @param args
 	 * @throws Exception
@@ -42,7 +54,7 @@ public class CountingSort {
 			System.out.println(i);
 		}
 		System.out.println("after:");
-		countingSort(array, 100 + 1);
+		countingSort(array);
 		for(int i : array){
 			System.out.println(i);
 		}
