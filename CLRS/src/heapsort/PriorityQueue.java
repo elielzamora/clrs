@@ -27,6 +27,30 @@ public class PriorityQueue {
 	public int get(int i){return this.heap[i];}
 	public int size(){return this.size;}
 	public int length(){return this.heap.length;}
+	/**
+	 * i is index to be changed 
+	 * j is the value that the key should change to
+	 * @param i
+	 * @param j
+	 * @throws InsertSmallerKeyException 
+	 * @throws HeapOverflowException 
+	 * @throws HeapUnderflowException 
+	 */
+	public void changeKey(int i, int j)
+			throws InsertSmallerKeyException, HeapOverflowException, HeapUnderflowException{
+		if(i < 0) throw new HeapUnderflowException();
+		if(i >= size) throw new HeapOverflowException();
+		if(get(i) > j) decrease(i, j);
+		else if(get(i) < j) increase(i, j);
+		//else nada
+	}
+	/**
+	 * Increase a key in a priority queue by climbing the heap
+	 * if it is larger than its parent key
+	 * @param i
+	 * @param j
+	 * @throws InsertSmallerKeyException
+	 */
 	public void increase(int i, int j)
 		throws InsertSmallerKeyException{
 		if(j < this.get(i))
@@ -37,14 +61,24 @@ public class PriorityQueue {
 			i = parent(i);
 		}
 	}
-	public void insert(int i){
+	/**
+	 * support decrease key operation in a max heap
+	 * @param i
+	 * @param j
+	 */
+	public void decrease(int i, int j){
+		
+	}
+	public void insert(int i)throws HeapOverflowException{
 		if(size() < length()){
 			this.size++;
-			this.heap[size()] = SENTINEL;
+			this.heap[size()-1] = SENTINEL;
 			try {//should work
-				increase(size(), i);
+				increase(size()-1, i);
 			} catch (InsertSmallerKeyException e){}
-		}		
+		}else{
+			throw new HeapOverflowException();
+		}
 	}
 	public void swap(int i, int j){
 		int temp = this.get(i);
@@ -92,7 +126,7 @@ public class PriorityQueue {
 	}
 	
 	public static void main(String ... args)
-			throws NotMaxHeapException{
+			throws NotMaxHeapException, HeapOverflowException{
 		PriorityQueue pq = new PriorityQueue(10);
 		pq.insert(5);
 		pq.insert(20);
@@ -105,7 +139,7 @@ public class PriorityQueue {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i = 0; i < pq.size(); i++){
+		for(int i = 0; i < pq.length(); i++){
 			System.out.println(pq.get(i));
 		}
 	}
